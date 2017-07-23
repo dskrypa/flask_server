@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block body %}
+
+    {% if req_item %}
+    <p>You requested {{ req_item }}</p>
+    {% endif %}
+
+    {% for tbl in tables %}
+        <h1>{{ tbl.title }}</h1>
+        <table>
+            {% for key, value in tbl.rows.iteritems() %}
+            <tr><td>{{ key|safe }}</td><td>{{ value|safe }}</td></tr>
+            {% endfor %}
+        </table>
+    {% endfor %}
+
+{% endblock %}
