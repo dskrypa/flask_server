@@ -19,7 +19,7 @@ def get_info():
 
 
 @app.route("/")
-def get_home():
+def get_root():
     return render_template("example.html", tables=get_info())
 
 
