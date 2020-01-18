@@ -5,13 +5,21 @@
     <p>You requested {{ req_item }}</p>
     {% endif %}
 
-    {% for tbl in tables %}
-        <h1>{{ tbl.title }}</h1>
-        <table>
-            {% for key, value in tbl.rows.iteritems() %}
-            <tr><td>{{ key|safe }}</td><td>{{ value|safe }}</td></tr>
-            {% endfor %}
-        </table>
-    {% endfor %}
+    {% if pre_rendered %}
+        {% for row in pre_rendered %}
+            {{ row | safe }}
+        {% endfor %}
+    {% endif %}
+
+    {% if tables %}
+        {% for tbl in tables %}
+            <h1>{{ tbl.title }}</h1>
+            <table>
+                {% for key, value in tbl.rows.items() %}
+                    <tr><td>{{ key|safe }}</td><td>{{ value|safe }}</td></tr>
+                {% endfor %}
+            </table>
+        {% endfor %}
+    {% endif %}
 
 {% endblock %}
